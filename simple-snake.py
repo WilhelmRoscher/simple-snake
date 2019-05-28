@@ -1,13 +1,6 @@
 import os, time, random, sys
 from pynput.keyboard import Key, Listener
 
-last_key_pressed = ""
-score = 0
-height = 12
-width = 20
-refresh_time = 0.2
-fruit_number = 1
-
 clear = lambda: os.system('clear')
 
 def print_help():
@@ -16,6 +9,13 @@ def print_help():
     print "Author: Wilhelm Roscher"
 
     sys.exit(0)
+
+last_key_pressed = ""
+score = 0
+height = 12
+width = 20
+refresh_time = 0.2
+fruit_number = 1    
 
 # handle arguments (-h -w -r -f --help)
 i_argument=0
