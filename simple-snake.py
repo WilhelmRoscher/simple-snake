@@ -1,7 +1,19 @@
 import os, time, random, sys
 from pynput.keyboard import Key, Listener
 
-clear = lambda: os.system('clear')
+last_key_pressed = ""
+score = 0
+height = 12
+width = 20
+refresh_time = 0.2
+fruit_number = 1
+
+def clear():
+	if os.name == "nt":
+		os.system('cls')
+	else:
+		os.system('clear')
+
 
 def print_help():
     print "Simple-Snake (Version 0.1) is a simple snake game written in python.\nUse wasd to play.\n"
@@ -10,12 +22,27 @@ def print_help():
 
     sys.exit(0)
 
-last_key_pressed = ""
-score = 0
-height = 12
-width = 20
-refresh_time = 0.2
-fruit_number = 1    
+# This will store the last key the player pressed. It's used to determine the direction of the snake.
+def on_press(key):
+    global last_key_pressed
+    last_key_pressed = str(key)[2]  # there may be a better way
+
+# This will refresh the playing field on the display.
+def refresh(field):
+    output = "--" * (width +1) + "- \n" # top part of the frame
+
+    for line in field:
+        output += "| " # left part of the frame
+
+        for position in line: output += position
+
+        output += "| \n" # right part of the frame
+
+    output += "--" * (width +1) + "- \n" # bottom part of the frame
+    output += "\nScore: " + str(score)
+
+    clear()
+    print output
 
 # handle arguments (-h -w -r -f --help)
 i_argument=0
@@ -49,28 +76,6 @@ for argument in sys.argv:
             print_help()
 
     i_argument+=1
-
-# This will store the last key the player pressed. It's used to determine the direction of the snake.
-def on_press(key):
-    global last_key_pressed
-    last_key_pressed = str(key)[2]  # there may be a better way
-
-# This will refresh the playing field on the display.
-def refresh(field):
-    output = "--" * (width +1) + "- \n" # top part of the frame
-
-    for line in field:
-        output += "| " # left part of the frame
-
-        for position in line: output += position
-
-        output += "| \n" # right part of the frame
-
-    output += "--" * (width +1) + "- \n" # bottom part of the frame
-    output += "\nScore: " + str(score)
-
-    clear()
-    print output
 
 #=== Start of the Game ===
 
