@@ -14,7 +14,6 @@ def clear():
 	else:
 		os.system('clear')
 
-
 def print_help():
     print "Simple-Snake (Version 0.1) is a simple snake game written in python.\nUse wasd to play.\n"
     print "Usage: python simple-snake.py [-h height] [-w width]\n       [-r refresh-time (speed)] [-f number of fruit] [--help]\n"
