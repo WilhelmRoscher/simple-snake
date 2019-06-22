@@ -1,5 +1,5 @@
 # simple-snake
-simple-snake is a simple snake game written in python. The special focus is, that it's code should be easy to read and understand.
+simple-snake is a simple snake game written in python. The special focus is, that it's code should be easy to read and understand. [Youtube Video](https://youtu.be/JQwJlGBpy2A)
 
 ![Alt text](/screenshots/simple-snake.png?raw=true "default gamemode")
 
